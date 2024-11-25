@@ -24,3 +24,12 @@ class FileSerializer(serializers.ModelSerializer):
         instance.analysis_result = validated_data.get('analysis_result', instance.analysis_result)
         instance.save()
         return instance
+
+
+class UploadFileSerializer(serializers.Serializer):
+    file = serializers.FileField(required=False)
+    url = serializers.URLField(required=False)
+    name = serializers.CharField(max_length=255)
+    speakers = serializers.IntegerField()
+    language = serializers.CharField(max_length=100)
+    analyze_text = serializers.BooleanField(required=False, default=False)

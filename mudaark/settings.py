@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-afe7j%5h*(iph75synbd=_xjx#8ow2_c1%1mbt4@zww%o#@gft'
 DEBUG = True
 
-ALLOWED_HOSTS = ['mu.daark-team.ru']
+ALLOWED_HOSTS = ['mu.daark-team.ru', 'localhost']
 CSRF_TRUSTED_ORIGINS= ['https://mu.daark-team.ru']
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -151,12 +151,9 @@ AWS_QUERYSTRING_AUTH = False
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_SCHEMA_CLASS': (
-        'rest_framework.schemas.coreapi.AutoSchema',
-    ),
-
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ),
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',

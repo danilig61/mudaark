@@ -7,17 +7,13 @@ from django.shortcuts import redirect
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Mudaark API",
-        default_version='v1',
-        description="API documentation",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@mudaarkapi.local"),
-        license=openapi.License(name="BSD License"),
+        title="API Documentation",
+        default_version="v1",
+        description="API for mudaark",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
-
 
 def redirect_to_login(request):
     return redirect('main')
