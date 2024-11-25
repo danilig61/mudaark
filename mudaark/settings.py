@@ -9,7 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['mu.daark-team.ru', 'localhost']
 CSRF_TRUSTED_ORIGINS= ['https://mu.daark-team.ru']
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'storages',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +34,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mudaark.urls'
