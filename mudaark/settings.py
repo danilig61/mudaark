@@ -10,7 +10,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['mu.daark-team.ru', 'localhost']
 CSRF_TRUSTED_ORIGINS= ['https://mu.daark-team.ru']
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
