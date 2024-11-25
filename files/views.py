@@ -15,12 +15,14 @@ from .config import minio_client
 import requests
 import os
 from django.conf import settings
+from rest_framework.parsers import MultiPartParser, FormParser
 
 logger = logging.getLogger(__name__)
 
 
 class UploadFileAPIView(APIView):
     permission_classes = [IsAuthenticated]
+    parser_classes = (MultiPartParser, FormParser)
 
     @swagger_auto_schema(
         operation_description="Upload a file or provide a URL for processing",

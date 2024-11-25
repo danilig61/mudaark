@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, viewsets
@@ -12,6 +14,9 @@ from .forms import RegisterForm
 from .tasks import send_verification_email
 import secrets
 from django.shortcuts import render
+
+
+logger = logging.getLogger(__name__)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -39,11 +44,14 @@ class LoginAPIView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
+        logger.info(f"Login attempt with email: {email}")
         user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
+            logger.info(f"Login successful for user: {user.username}")
             return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
         else:
+            logger.warning(f"Invalid credentials for email: {email}")
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -156,4 +164,4 @@ class MainAPIView(APIView):
         if request.user.is_authenticated:
             return Response({'message': f'Welcome, {request.user.username}'}, status=status.HTTP_200_OK)
         else:
-            return render(request, 'accounts/main.html')
+            return Response({'message': 'Welcome to the main page'}, status=status.HTTP_200_OK)
