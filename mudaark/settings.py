@@ -150,6 +150,11 @@ AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 
 REST_FRAMEWORK = {
+
+    'DEFAULT_SCHEMA_CLASS': (
+        'rest_framework.schemas.coreapi.AutoSchema',
+    ),
+
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
